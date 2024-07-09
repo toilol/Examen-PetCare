@@ -5,3 +5,7 @@ from .forms import ServicioForm
 def index(request):
     context={}
     return render(request, 'index.html', context)
+
+def crud(request):
+    servicio = Servicio.objects.all()
+    return render(request, 'crud.html', {'servicio': servicio})
