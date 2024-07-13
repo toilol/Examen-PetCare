@@ -43,3 +43,10 @@ def borrar(request,pk):
     servicios = Servicio.objects.all()
     context = {'servicios': servicios, 'mensaje': mensaje}
     return render(request, 'crud.html', context)
+
+def carrito(request):
+    servicio = Servicio.objects.all()  # Obtener todos los servicios
+    context = {
+        'servicios': servicio
+    }
+    return render(request, 'carrito.html', context)
