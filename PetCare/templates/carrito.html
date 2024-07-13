@@ -41,9 +41,26 @@
 
         <div class="cart">
             <h2>Carrito de Compras</h2>
-            <ul id="cart-items"></ul>
-            <p>Total: $<span id="total-price">0.00</span></p>
+            <ul id="cart-items">
+                {% for item in cart %}
+                    <li>{{ item.name }} - ${{ item.price|floatformat:"2" }}</li>
+                {% endfor %}
+            </ul>
+            <div class="row">
+                <div class="col-md-6">
+                    <div id="mensaje-exito" class="alert alert-success mt-3" style="display: none;">
+                        Compra exitosa! Aquí está tu boleta:
+                        <ul id="boleta"></ul>
+                        <p>Total: $<span id="total-boleta">0.00</span></p>
+                    </div>
+                </div>
+                <div class="col-md-6 text-md-end"> 
+                    <button id="btn-pagar" class="btn btn-primary">Pagar</button>
+                </div>
+            </div>
+            
         </div>
+        
     </div>
 
     <script src="{% static 'js/script.js' %}"></script>
