@@ -13,10 +13,10 @@
             height: auto;
             max-width: 100%;
             max-height: 300px; 
-        }  
+        }   
 
         body {
-            background-image: url("{% static 'js/img/patagato.png' %}");
+            background-image: url("{% static 'js/img/patagatofant.png' %}");
             background-color: rgba(196, 196, 196, 0.9);
             background-repeat: repeat;
             background-size: cover;
@@ -24,9 +24,70 @@
             background-repeat: repeat;
             background-size: auto;
         }
+
+        .navbar {
+            background-color: #ffffff; /* Color de fondo */
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+        }
+
+        .navbar-brand {
+            font-weight: bold; /* Texto en negrita */
+            color: #007bff; /* Color del texto */
+        }
+
+        .navbar-toggler-icon {
+            border-color: #007bff; /* Color del icono del botón de desplegar */
+        }
+
+        .navbar-nav .nav-link {
+            color: #333333; /* Color del texto de los enlaces */
+            margin-left: 10px; /* Espaciado entre los enlaces */
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #007bff; /* Color del texto de los enlaces al pasar el mouse */
+        }
+
+        .btn-primary {
+            background-color: #007bff; /* Color de fondo del botón primario */
+            border-color: #007bff; /* Color del borde del botón primario */
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3; /* Color de fondo del botón primario al pasar el mouse */
+            border-color: #0056b3; /* Color del borde del botón primario al pasar el mouse */
+        }
     </style>
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'index' %}">PetCare</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <form action="{% url 'logout' %}" method="post" class="nav-link">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger me-2">Cerrar Sesión</button>
+                            </form>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-primary" href="{% url 'crud' %}">Servicios</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-primary" href="{% url 'login' %}">Iniciar Sesión</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
       
     <div class="container">
         <h1 class="text-center mb-4">Nuestros servicios para tus mascotas</h1>

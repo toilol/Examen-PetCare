@@ -3,16 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar</title>
+    <title>Editar Servicio</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Color de fondo */
+            padding: 20px; /* Espacio alrededor del contenido */
+        }
+
+        h2 {
+            margin-bottom: 20px; /* Espacio inferior del encabezado */
+            color: #007bff; /* Color del texto del encabezado */
+        }
+
+        form {
+            background-color: #ffffff; /* Color de fondo del formulario */
+            padding: 20px; /* Espacio interno del formulario */
+            border-radius: 5px; /* Bordes redondeados */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+        }
+
+        .btn-primary {
+            margin-right: 10px; /* Espacio entre botones */
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3; /* Color de fondo del botón al pasar el mouse */
+        }
+
+        .btn-back {
+            background-color: #6c757d; /* Color de fondo del botón de volver */
+            border-color: #6c757d; /* Color del borde del botón de volver */
+        }
+
+        .btn-back:hover {
+            background-color: #5a6268; /* Color de fondo del botón de volver al pasar el mouse */
+            border-color: #5a6268; /* Color del borde del botón de volver al pasar el mouse */
+        }
+    </style>
 </head>
 <body>
-    <h2>Editar Servicio</h2>
-    <form method="post" class="form-group" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Guardar</button>
-    </form>
-    <a href="{% url 'crud' %}" class="btn btn-primary">Ver servicios</a>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <h2 class="text-center">Editar Servicio</h2>
+                <form method="post" class="form-group" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <a href="{% url 'crud' %}" class="btn btn-back">Ver servicios</a>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
