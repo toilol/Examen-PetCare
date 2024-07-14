@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +14,16 @@
             max-width: 100%;
             max-height: 300px; 
         }  
+
+        body {
+            background-image: url("{% static 'js/img/patagato.png' %}");
+            background-color: rgba(196, 196, 196, 0.9);
+            background-repeat: repeat;
+            background-size: cover;
+            z-index: -1;
+            background-repeat: repeat;
+            background-size: auto;
+        }
     </style>
 </head>
 <body>
