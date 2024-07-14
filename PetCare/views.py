@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect,get_object_or_404
+from django.contrib.auth import authenticate, login,logout
 from .models import Servicio
 from .forms import ServicioForm
 # Create your views here.
@@ -50,3 +51,28 @@ def carrito(request):
         'servicios': servicio
     }
     return render(request, 'carrito.html', context)
+
+def login_view(request):
+    # Renderiza la página de inicio de sesión (login.html)
+    return render(request, 'login.html')
+
+def signin(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            # Redirige a la página de inicio después del inicio de sesión exitoso
+            return redirect('index')
+        else:
+            # Maneja el caso de inicio de sesión fallido
+            messages.error(request, 'Usuario o contraseña incorrectos.')
+            return render(request, 'login.html')
+    else:
+        # Si no es un POST request, muestra el formulario de inicio de sesión
+        return render(request, 'login.html')
+
+def logout_view(request):
+    logout(request)
+    return redirect('index')
