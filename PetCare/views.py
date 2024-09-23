@@ -2,6 +2,8 @@ from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth import authenticate, login,logout
 from .models import Servicio
 from .forms import ServicioForm
+from django.contrib import messages
+
 # Create your views here.
 def index(request):
     context={}
